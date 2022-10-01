@@ -1,0 +1,176 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    
+}
+@font-face {
+    font-family: amsi;
+    src: url("./assets/AmsiPro-Ultra.woff");
+}
+
+
+ul { 
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    background-color: black;
+}
+
+.container { 
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.background-container {
+    background: black url('./assets/1200016.jpg') no-repeat;
+    background-size: cover;
+    
+}
+    /*header*/
+#navbar-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    
+}
+
+#logo {
+    font-size: 2rem;
+    color: #ff0000;
+}
+
+.navbar-menu {
+    display: flex;
+
+}
+
+.navbar-menu li {
+    margin: 0 2rem;
+}
+
+
+.navbar-menu a {
+    color: #fff;
+    transition: 500ms;
+    font-weight: 100;
+}
+
+.navbar-menu  a:hover {
+    color: #ff0000;
+}
+
+
+
+.icons-container a {
+    margin: 0  0.5rem;
+ }
+
+
+.search-input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    min-height: 40px;
+    font-size: 1.2rem;
+    
+}
+
+.search-input::placeholder {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.2rem;
+
+    
+}
+
+.outdoor-gradient-container { 
+    background-color: rgba(0, 0 , 0, 0.7);
+    min-height: 100vh;
+    padding: 4rem 0rem;
+}
+
+#search-btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.3rem;
+    
+}
+
+
+
+/*details containers movie outdoor*/
+
+.details-outdoor-container {
+    margin: 12rem auto;
+   
+}
+
+
+#title-outooor-movie { 
+    font-size: 5rem;
+    font-weight: bolder;
+    margin: 2rem 0rem;
+    font-family: amsi;
+    
+   
+}
+
+
+.details-movie-outdoor-container p{
+    font-size: 1.5rem;
+    max-width: 600px;
+    font-weight: 100;
+    margin: 1rem 0rem;
+}
+
+
+/*popular-movies-container*/
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+
+}
+
+.title-category {
+    font-size: 3rem;
+    margin: 5rem 0;
+}
+
+
+.movie-container {
+    width: 360px;
+    max-height: 700px;
+    transition: 500ms;
+    cursor: pointer;
+    margin: 1rem;
+    
+}
+
+/* .movie:hover {
+    max-width: 280px;
+    max-height: 450px;
+    margin: 0.5rem 1.2rem;
+} */
+
+
+.poster-movie {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
