@@ -1,4 +1,4 @@
-const topRatedMoviesCategory = document.querySelector('.top-rated-movies-container')
+const topRatedMoviesCategoryEl = document.querySelector('.top-rated-movies-container')
 const apiKey = '218aed1d10794deff7b827964c539e0c'
 const urlTopRatedMovies = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`
 
@@ -8,21 +8,19 @@ const request = async url => {
     try {
         const response = await fetch(url)
         const data = await response.json()
-        const moviesList = data.results
-        console.log(moviesList)
-        createCategory(moviesList,topRatedMoviesCategory)
+        return data
         
     } catch(error){
         console.log(error)
     }    
 }
 
+const createCategory = async (urlCategory,categoryEl) => {
+    const moviesList = await request(urlCategory)
 
-const createCategory = (moviesList,category) => {
-    
-    moviesList.forEach( movie => {
+    moviesList.results.forEach( movie => {
         const movieContainer = createMovieContainer()
-        category.appendChild(movieContainer)
+        categoryEl.appendChild(movieContainer)
         movieContainer.append(createPosterMovie(movie),createTitleMovie(movie),createRankingImdb(movie))
         
         
@@ -55,7 +53,17 @@ const createMovieContainer = () => {
     movieContainer.classList.add('movie-container')
     return movieContainer
 } 
+const init = () => {
+    createCategory(urlTopRatedMovies,topRatedMoviesCategoryEl)
+    
+}
 
+init()
 
+//request(urlTopRatedMovies)
 
-request(urlTopRatedMovies)
+fetch(`https://api.themoviedb.org/3/movie/55?api_key=${apiKey}`)
+.then(response => response.json())
+.then(data => {
+    console.log(data)
+})
