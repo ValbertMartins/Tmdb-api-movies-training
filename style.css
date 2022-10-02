@@ -24,6 +24,8 @@ a {
 
 body {
     background-color: black;
+    transition: 1s;
+    opacity: 0;
 }
 
 .container { 
@@ -31,9 +33,9 @@ body {
     margin: 0 auto;
 }
 
-.background-container {
-    background: black url('./assets/1200016.jpg') no-repeat;
+.background-container-outdoor {
     background-size: cover;
+    background-repeat: no-repeat;
     
 }
     /*header*/

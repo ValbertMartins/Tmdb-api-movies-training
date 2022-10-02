@@ -1,7 +1,8 @@
 const topRatedMoviesCategoryEl = document.querySelector('.top-rated-movies-container')
 const apiKey = '218aed1d10794deff7b827964c539e0c'
 const urlTopRatedMovies = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`
-
+const urlImages = `https://image.tmdb.org/t/p/original`
+const urlDiscoverMovies = `https://api.themoviedb.org/3/discover/movie?`
 
 const request = async url => {
 
@@ -61,9 +62,31 @@ const init = () => {
 init()
 
 //request(urlTopRatedMovies)
+const body = document.querySelector('body')
+const title = document.querySelector('#title-outooor-movie')
 
-fetch(`https://api.themoviedb.org/3/movie/55?api_key=${apiKey}`)
-.then(response => response.json())
-.then(data => {
+
+const createOutdoorMovie = async () => {    
+
+    const data = await request(`${urlDiscoverMovies}api_key=${apiKey}&page=${randomNumber(500)}&language=pt-BR`)
     console.log(data)
-})
+    const { backdrop_path, title , vote_average , overview } = data.results[randomNumber(19)]
+    outdoorDetails(title,backdrop_path,vote_average, overview)
+    body.style.opacity = 1
+    
+      
+}
+
+const outdoorDetails = (title,background,vote_average, overview) => {
+    const backgroundMovieEl = document.querySelector('.background-container-outdoor')
+    backgroundMovieEl.style.backgroundImage = `url(${urlImages}${background})`
+    document.querySelector('#title-outooor-movie').innerText = title
+    document.querySelector('.sinopsis-outdoor').innerText = overview
+
+}
+
+const randomNumber = multiplier => Math.ceil(Math.random() * multiplier)
+
+createOutdoorMovie()
+
+
