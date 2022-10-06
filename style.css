@@ -36,6 +36,8 @@ body {
 .background-container-outdoor {
     background-size: cover;
     background-repeat: no-repeat;
+    transition: 500ms;
+   
     
 }
     /*header*/
@@ -44,6 +46,7 @@ body {
     justify-content: space-between;
     align-items: center;
     font-size: 1.3rem;
+    padding: 4rem 0rem;
     
 }
 
@@ -98,7 +101,7 @@ body {
 .outdoor-gradient-container { 
     background-color: rgba(0, 0 , 0, 0.7);
     min-height: 100vh;
-    padding: 4rem 0rem;
+    
 }
 
 #search-btn {
@@ -125,16 +128,18 @@ body {
     font-weight: bolder;
     margin: 2rem 0rem;
     font-family: amsi;
+    max-width: 900px;
     
    
 }
 
 
 .details-movie-outdoor-container p{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     max-width: 600px;
     font-weight: 100;
     margin: 1rem 0rem;
+    font-style: italic;
 }
 
 
@@ -144,6 +149,7 @@ body {
 .flex-container {
     display: flex;
     flex-wrap: wrap;
+
     
     
 
@@ -162,6 +168,7 @@ body {
     cursor: pointer;
     margin: 1rem;
     
+    
 }
 
 /* .movie:hover {
@@ -175,4 +182,5 @@ body {
     width: 100%;
     margin-bottom: 1rem;
     border-radius: 10px;
+    
 }
