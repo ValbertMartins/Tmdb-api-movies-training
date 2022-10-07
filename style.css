@@ -38,15 +38,19 @@ body {
     background-repeat: no-repeat;
     transition: 500ms;
    
+   
     
 }
     /*header*/
-#navbar-header-container {
+.navbar-header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.3rem;
     padding: 4rem 0rem;
+   
+   
+   
     
 }
 
@@ -57,11 +61,14 @@ body {
 
 .navbar-menu {
     display: flex;
+  
+    
 
 }
 
 .navbar-menu li {
     margin: 0 2rem;
+   
 }
 
 
@@ -113,12 +120,38 @@ body {
     
 }
 
+.default-button {
+    height: 60px;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    padding: 0rem 2rem;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+.conntainer-buttons {
+    display: flex;
+    justify-content: center;
+    
+}
+
+#addList-btn {
+    color: red;
+}
+
+#watch-btn {
+    color: #fff;
+    background-color: red;
+}
+
 
 
 /*details containers movie outdoor*/
 
 .details-outdoor-container {
-    margin: 12rem auto;
+    margin: 5rem auto;
    
 }
 
@@ -138,10 +171,15 @@ body {
     font-size: 1.2rem;
     max-width: 600px;
     font-weight: 100;
-    margin: 1rem 0rem;
+    margin: 2rem 0rem;
     font-style: italic;
 }
 
+
+/* .gradient-black {
+    background: linear-gradient(rgba(0,0,0,0.5),black);
+    height: 300px;
+} */
 
 /*popular-movies-container*/
 
@@ -163,19 +201,21 @@ body {
 
 .movie-container {
     width: 360px;
-    max-height: 700px;
+    max-height: 600px;
     transition: 500ms;
     cursor: pointer;
     margin: 1rem;
     
+   
+    
     
 }
 
-/* .movie:hover {
-    max-width: 280px;
-    max-height: 450px;
-    margin: 0.5rem 1.2rem;
-} */
+.movie-container:hover {
+    /* width: 380px; */
+    transform: scale(1.1)
+    
+}
 
 
 .poster-movie {
@@ -183,4 +223,31 @@ body {
     margin-bottom: 1rem;
     border-radius: 10px;
     
+}
+
+/* results */
+
+
+#results-category {
+    animation: opacityAnimation;
+    animation-duration: 1s;
+}
+
+
+
+
+@keyframes opacityAnimation {
+    0% {
+        opacity: 0;
+    }
+
+   
+    100% {
+        opacity: 100%;
+    }
+}
+
+.animation-class {
+    animation: opacityAnimation;
+    animation-duration: 1s;
 }

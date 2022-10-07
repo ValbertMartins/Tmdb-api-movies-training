@@ -7,7 +7,7 @@ const urlDiscoverMovies = `${urlBase}/discover/movie?`
 const urlSearchMovies = `${urlBase}/search/movie?api_key=${apiKey}&query=`
 
 
-//request
+
 const request = async url => {
 
     try {
@@ -95,39 +95,51 @@ const randomNumber = multiplier => Math.ceil(Math.random() * multiplier)
 
 
 
-//teste
-const hideOutdoor = (outdoorEL,resultSearchEl) => {
+
+const hideOutdoor = (outdoorEL,resultSearchEl,backgroundOutdoor) => {
     outdoorEL.style.display = 'none'
-    document.querySelector('.background-container-outdoor').style.backgroundSize = '0'
+    backgroundOutdoor.style.backgroundSize = '0'
     document.querySelector('.outdoor-gradient-container').style.minHeight = '0' 
     resultSearchEl.style.display = 'flex'
 
 }
-const showOutdoor = (outdoorEL) => {
+const showOutdoor = (outdoorEL,backgroundOutdoor) => {
     outdoorEL.style.display = 'block'
-    document.querySelector('.background-container-outdoor').style.backgroundSize = 'cover'
+    backgroundOutdoor.style.backgroundSize = 'cover'
+    backgroundOutdoor.classList.add('animation-class')
     document.querySelector('.outdoor-gradient-container').style.minHeight = '100vh'
 }
-
 const hideCategory = category => category.style.display = 'none'
+
+
+
+
+const searchAndCreateAnimations = (backgroundOutdoor,searchInput,resultSearchEl,outdoorEL) => {
+    backgroundOutdoor.classList.remove('animation-class')
+    if(searchInput){
+        
+        hideOutdoor(outdoorEL,resultSearchEl,backgroundOutdoor)
+        createCategory(urlSearchMovies + searchInput, resultSearchEl)
+       
+    } else {
+        showOutdoor(outdoorEL,backgroundOutdoor)
+        hideCategory(resultSearchEl)
+    }
+}
 
 const SearchListener =  () => {
     const searchInput = document.querySelector('.search-input')
     const resultSearchEl = document.querySelector('#results-category')
     const outdoorEL = document.querySelector('.details-outdoor-container')
+    const backgroundOutdoor = document.querySelector('.background-container-outdoor')
 
     searchInput.addEventListener('keyup' , () => {
-        if(searchInput.value){
-            hideOutdoor(outdoorEL,resultSearchEl)
-            createCategory(urlSearchMovies + searchInput.value, resultSearchEl)
-           
-        } else {
-            showOutdoor(outdoorEL)
-            hideCategory(resultSearchEl)
-        }
+        searchAndCreateAnimations(backgroundOutdoor,searchInput.value,resultSearchEl,outdoorEL)
     })
 
 }
+
+
 
 
 const init = () => {

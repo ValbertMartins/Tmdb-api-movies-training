@@ -6,14 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Movies app</title>
         <link rel="stylesheet" href="./style.css">
-        <script src="./script.js" defer></script>
+        <script src="./script.js" defer type="module"></script>
         <script src="https://kit.fontawesome.com/b232b9165a.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="background-container-outdoor">
             <div class="outdoor-gradient-container">
                 <header class="container">
-                    <nav id="navbar-header-container">
+                    <nav class="navbar-header-container">
                         <a href=""id="logo">MOVIEDOM</a>
                         <ul class="navbar-menu" >
                             <li><a href="">TV Shows</a></li>
@@ -44,9 +44,18 @@
                             error, distinctio facere, atque odio consectetur harum quam! 
                         </p>
     
+
+                        <div class="container-buttons">
+                            <button class="default-button" id="watch-btn"><span>
+                                <i class="fa-sharp fa-solid fa-play"></i></span>
+                                Watch Now
+                            </button>
+                            <button class="default-button" id="addList-btn">Add list</button>
+                        </div>
                     </article>
     
                 </section>
+               
             </div>
 
         </div>
@@ -60,6 +69,8 @@
             <article class="flex-container" id="results-category">
             </article>
             
+           
+
             <h1 class="title-category">Popular Movies</h1>
             <article class="top-rated-movies-container flex-container"></article>
 
