@@ -5,7 +5,7 @@ const urlTopRatedMovies = `${urlBase}/movie/top_rated?api_key=${apiKey}`
 const urlImages = `https://image.tmdb.org/t/p/original`
 const urlDiscoverMovies = `${urlBase}/discover/movie?`
 const urlSearchMovies = `${urlBase}/search/movie?api_key=${apiKey}&query=`
-
+import render from "./render.js"
 
 
 const request = async url => {
@@ -34,14 +34,29 @@ const createCategory = async (urlCategory,categoryEl) => {
             const movieContainer = createMovieContainer()
             categoryEl.appendChild(movieContainer)
             movieContainer.append(createPosterMovie(movie),createTitleMovie(movie),createRankingImdb(movie))
-                 
+
+
+            movieContainer.addEventListener('click', () => {
+                showInformation(movie)
+            })
         });  
-
+        
     }
-
-    
-
+       
 }
+//parei aqui ontem
+const showInformation = (movie) => {
+    console.log(movie)
+    console.log(movie)
+    document.querySelector('body').innerHTML = render(urlImages + movie.poster_path,movie.title,movie.overview)
+    console.log(render)
+        
+}
+
+// const returnBody = () => {
+//     const mainPage = document.querySelector('body').innerHTML  
+//     return mainPage
+// }
 const createRankingImdb = movie => {
     const rankingImdb = document.createElement('span')
     rankingImdb.innerHTML = `${movie.vote_average} <i class="fa-regular fa-star"></i>`
