@@ -44,7 +44,7 @@ const createCategory = async (urlCategory,categoryEl) => {
 }
 const createRankingImdb = movie => {
     const rankingImdb = document.createElement('span')
-    rankingImdb.innerText = movie.vote_average
+    rankingImdb.innerHTML = `${movie.vote_average} <i class="fa-regular fa-star"></i>`
     return rankingImdb
     
 }
@@ -76,7 +76,7 @@ const createMovieContainer = () => {
 //outdoor-section
 
 const createOutdoorMovie = async () => {  
-    const data = await request(`${urlDiscoverMovies}api_key=${apiKey}&page=${randomNumber(500)}&language=pt-BR`)
+    const data = await request(`${urlDiscoverMovies}api_key=${apiKey}&page=${randomNumber(100)}&language=pt-BR`)
     const { backdrop_path, title , vote_average , overview } = data.results[randomNumber(19)]
     outdoorDetails(title,backdrop_path,vote_average, overview)
     document.querySelector('body').style.opacity = 1

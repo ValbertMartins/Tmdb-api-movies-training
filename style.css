@@ -176,12 +176,9 @@ body {
 }
 
 
-/* .gradient-black {
-    background: linear-gradient(rgba(0,0,0,0.5),black);
-    height: 300px;
-} */
 
-/*popular-movies-container*/
+
+/*top rated movies-container*/
 
 
 .flex-container {
@@ -193,9 +190,22 @@ body {
 
 }
 
+
+
 .title-category {
     font-size: 3rem;
     margin: 5rem 0;
+   
+
+}
+.title-category::after {
+    content: '';
+    font-size: 1rem;
+    height: 5px;
+    width: 250px;
+    display: inline-block;
+    background: linear-gradient(to right ,red , black);
+    margin: 10px;
 }
 
 
@@ -250,4 +260,47 @@ body {
 .animation-class {
     animation: opacityAnimation;
     animation-duration: 1s;
+}
+
+
+/* footer */
+
+
+footer {
+    background-color: rgba(37,36,35,255);
+    margin-top: 2rem;
+    min-height: 200px;
+    
+    
+    
+
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    color: #848483;
+    align-items: center;
+    max-width: 1550px;
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+
+.icons-social-container a{
+    min-width: 50px;
+    min-height: 50px;
+    margin: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #898b8a;
+    border-radius: 25px;
+    
+}
+
+
+.icons-social-container  i {
+    font-size: 2rem;
+    color: rgba(37,36,35,255);
 }
