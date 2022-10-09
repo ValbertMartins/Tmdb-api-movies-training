@@ -25,7 +25,7 @@ export default function render(poster,title,sinopsis) {
 
         <section class="container">
             <div>
-                <h1>${title}</h1>
+                <h1 class='title-movie'>${title}</h1>
             </div>
 
             <article class="movie-informations-container">
@@ -44,10 +44,50 @@ export default function render(poster,title,sinopsis) {
                             ${sinopsis}
                         </p>
                     </div>
+                    <div>
+                       <button class="default-button" id="watch-btn">
+                            <span>
+                                 <i class="fa-sharp fa-solid fa-play"></i>
+                            </span> Play
+                        </button>
+                    </div>
                 </div>
+
 
             </article>
 
         </section>
+
+
+        <footer>
+            <div class="footer-container">
+                <a href=""id="logo">MOVIEDOM</a>
+                <ul class="navbar-menu" >
+                    <li><a href="">TV Shows</a></li>
+                    <li><a href="#top-rated-movies">Movies</a></li>
+                    <li><a href="">Upcoming</a></li>
+                    <li><a href="">Trailers</a></li>
+                    <li><a href="">My list</a></li>
+                </ul>
+
+                <div class="icons-social-container flex-container">
+                    <a href="">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="">
+                        <i class="fa-brands fa-instagram"></i>  
+                    </a>
+
+                    <a href="">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </div>
+
+            </div>
+        </footer>
     `
 }

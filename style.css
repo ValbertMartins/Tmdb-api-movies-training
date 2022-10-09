@@ -22,9 +22,15 @@ a {
     color: black;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: black;
     transition: 1s;
+    opacity: 0;
+    
     
 }
 
@@ -144,6 +150,7 @@ body {
 #watch-btn {
     color: #fff;
     background-color: red;
+    min-width: 200px;
 }
 
 
@@ -269,7 +276,6 @@ body {
 footer {
     background-color: rgba(37,36,35,255);
     margin-top: 10rem;
-    min-height: 200px;
     
     
     
@@ -312,6 +318,7 @@ footer {
 .movie-informations-container {
     display: flex;
     justify-content: space-between;
+
 }
 
 .movie-details {
@@ -330,5 +337,10 @@ footer {
 }
 
 .sinopsis {
-    margin: 2rem 0rem;
+    margin: 1rem 0rem;
+}
+
+
+.title-movie {
+    margin: 1rem;
 }

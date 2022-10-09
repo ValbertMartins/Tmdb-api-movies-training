@@ -4,7 +4,8 @@ const apiKey = '218aed1d10794deff7b827964c539e0c'
 const urlTopRatedMovies = `${urlBase}/movie/top_rated?api_key=${apiKey}`
 const urlImages = `https://image.tmdb.org/t/p/original`
 const urlDiscoverMovies = `${urlBase}/discover/movie?`
-const urlSearchMovies = `${urlBase}/search/movie?api_key=${apiKey}&query=`
+const urlSearchMovies = `${urlBase}/search/multi?api_key=${apiKey}&query=`
+const main = document.querySelector('main')
 import render from "./render.js"
 
 
@@ -30,33 +31,36 @@ const createCategory = async (urlCategory,categoryEl) => {
         categoryEl.innerHTML = '<h1>Results not found</h1>'
     } else{ 
         categoryEl.innerHTML = ''
-        moviesList.forEach( movie => {
+        moviesList.forEach( movie_res => {
             const movieContainer = createMovieContainer()
             categoryEl.appendChild(movieContainer)
-            movieContainer.append(createPosterMovie(movie),createTitleMovie(movie),createRankingImdb(movie))
-
-
-            movieContainer.addEventListener('click', () => {
-                showInformation(movie)
-            })
+            movieContainer.append(createPosterMovie(movie_res),createTitleMovie(movie_res),createRankingImdb(movie_res))
+            
+            movieListeningClick(movieContainer,movie_res)
         });  
         
     }
        
 }
-//parei aqui ontem
-const showInformation = (movie) => {
-    console.log(movie)
+
+const movieListeningClick = (movie,movie_res) => {
+    movie.addEventListener('click' , () => {
+        showInformation(movie_res)
+        const infoMovieEL = document.querySelector('.movie-informations-container')
+        infoMovieEL.classList.add('animation-class')
+
+    } )
+}
+
+const showInformation = movie => {
     console.log(movie)
     document.querySelector('body').innerHTML = render(urlImages + movie.poster_path,movie.title,movie.overview)
-    console.log(render)
+    SearchListener()
+    
         
 }
 
-// const returnBody = () => {
-//     const mainPage = document.querySelector('body').innerHTML  
-//     return mainPage
-// }
+
 const createRankingImdb = movie => {
     const rankingImdb = document.createElement('span')
     rankingImdb.innerHTML = `${movie.vote_average} <i class="fa-regular fa-star"></i>`
