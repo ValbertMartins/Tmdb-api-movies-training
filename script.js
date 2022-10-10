@@ -1,7 +1,7 @@
 const topRatedMoviesCategoryEl = document.querySelector('.top-rated-movies-container')
 const urlBase = `https://api.themoviedb.org/3`
 const apiKey = '218aed1d10794deff7b827964c539e0c'
-const urlTopRatedMovies = `${urlBase}/movie/top_rated?api_key=${apiKey}`
+const urlTopRatedMovies = `${urlBase}/movie/top_rated?api_key=${apiKey}&language=pt-BR`
 const urlImages = `https://image.tmdb.org/t/p/original`
 const urlDiscoverMovies = `${urlBase}/discover/movie?`
 const urlSearchMovies = `${urlBase}/search/multi?api_key=${apiKey}&query=`
@@ -26,6 +26,8 @@ const request = async url => {
 //category-section
 const createCategory = async (urlCategory,categoryEl) => {
     const { results:moviesList } = await request(urlCategory)
+    console.log(moviesList)
+    console.log(categoryEl)
     
     if(moviesList.length == 0){
         categoryEl.innerHTML = '<h1>Results not found</h1>'
@@ -35,15 +37,16 @@ const createCategory = async (urlCategory,categoryEl) => {
             const movieContainer = createMovieContainer()
             categoryEl.appendChild(movieContainer)
             movieContainer.append(createPosterMovie(movie_res),createTitleMovie(movie_res),createRankingImdb(movie_res))
+            showMovieDetails(movieContainer,movie_res)
             
-            movieListeningClick(movieContainer,movie_res)
+
         });  
         
     }
        
 }
 
-const movieListeningClick = (movie,movie_res) => {
+const showMovieDetails = (movie,movie_res) => {
     movie.addEventListener('click' , () => {
         showInformation(movie_res)
         const infoMovieEL = document.querySelector('.movie-informations-container')
@@ -54,7 +57,7 @@ const movieListeningClick = (movie,movie_res) => {
 
 const showInformation = movie => {
     console.log(movie)
-    document.querySelector('body').innerHTML = render(urlImages + movie.poster_path,movie.title,movie.overview)
+    document.querySelector('body').innerHTML = render(urlImages , movie)
     SearchListener()
     
         
@@ -70,8 +73,8 @@ const createRankingImdb = movie => {
 
 const createPosterMovie = movie => {
     const img = document.createElement('img')
-    if(movie.poster_path){
-        img.src = `https://image.tmdb.org/t/p/original${movie.poster_path}`
+    if(movie.poster_path || movie.profile_path){
+        img.src = `https://image.tmdb.org/t/p/original${movie.poster_path ?? movie.profile_path}`
         img.classList.add('poster-movie')
         return img
     } 
@@ -80,7 +83,7 @@ const createPosterMovie = movie => {
 
 const createTitleMovie = movie => {
     const h3 = document.createElement('h3')
-    h3.innerText = movie.title
+    h3.innerText = movie.title ?? movie.name
     return h3
     
 }
@@ -116,10 +119,13 @@ const randomNumber = multiplier => Math.ceil(Math.random() * multiplier)
 
 
 const hideOutdoor = (outdoorEL,resultSearchEl,backgroundOutdoor) => {
-    outdoorEL.style.display = 'none'
-    backgroundOutdoor.style.backgroundSize = '0'
-    document.querySelector('.outdoor-gradient-container').style.minHeight = '0' 
-    resultSearchEl.style.display = 'flex'
+    if(outdoorEL){
+
+        outdoorEL.style.display = 'none'
+        backgroundOutdoor.style.backgroundSize = '0'
+        document.querySelector('.outdoor-gradient-container').style.minHeight = '0' 
+    }
+    
 
 }
 const showOutdoor = (outdoorEL,backgroundOutdoor) => {
@@ -134,11 +140,15 @@ const hideCategory = category => category.style.display = 'none'
 
 
 const searchAndCreateAnimations = (backgroundOutdoor,searchInput,resultSearchEl,outdoorEL) => {
-    backgroundOutdoor.classList.remove('animation-class')
+    if(backgroundOutdoor){
+        backgroundOutdoor.classList.remove('animation-class')
+
+    }
+
     if(searchInput){
-        
+        resultSearchEl.style.display = 'flex'
         hideOutdoor(outdoorEL,resultSearchEl,backgroundOutdoor)
-        createCategory(urlSearchMovies + searchInput, resultSearchEl)
+        createCategory(urlSearchMovies + searchInput + '&language=pt-BR', resultSearchEl)
        
     } else {
         showOutdoor(outdoorEL,backgroundOutdoor)
@@ -157,8 +167,6 @@ const SearchListener =  () => {
     })
 
 }
-
-
 
 
 const init = () => {

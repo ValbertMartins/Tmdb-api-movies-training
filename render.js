@@ -1,6 +1,6 @@
 
 
-export default function render(poster,title,sinopsis) {
+export default function render(urlImages,movie) {
     return `
     <header class="container">
             <nav class="navbar-header-container">
@@ -24,14 +24,16 @@ export default function render(poster,title,sinopsis) {
         
 
         <section class="container">
+            <article class="flex-container" id="results-category">
+            </article>
             <div>
-                <h1 class='title-movie'>${title}</h1>
+                <h1 class='title-movie'>${movie.title ?? movie.name}</h1>
             </div>
 
             <article class="movie-informations-container">
 
                 <div class="movie-container">
-                    <img src="${poster}"  class="poster-movie" alt="">
+                    <img src="${urlImages + (movie.poster_path ?? movie.profile_path)}"  class="poster-movie" alt="">
                 </div>
 
 
@@ -41,7 +43,7 @@ export default function render(poster,title,sinopsis) {
                     </div>
                     <div>
                         <p class="sinopsis">
-                            ${sinopsis}
+                            ${movie.overview}
                         </p>
                     </div>
                     <div>
@@ -61,7 +63,7 @@ export default function render(poster,title,sinopsis) {
 
         <footer>
             <div class="footer-container">
-                <a href=""id="logo">MOVIEDOM</a>
+                <a href=""id="logo"><span class='color-red'>MOVIE</span>DOM</a>
                 <ul class="navbar-menu" >
                     <li><a href="">TV Shows</a></li>
                     <li><a href="#top-rated-movies">Movies</a></li>
