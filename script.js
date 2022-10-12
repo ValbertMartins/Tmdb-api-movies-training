@@ -161,8 +161,8 @@ const SearchListener =  () => {
     const resultSearchEl = document.querySelector('#results-category')
     const outdoorEL = document.querySelector('.details-outdoor-container')
     const backgroundOutdoor = document.querySelector('.background-container-outdoor')
-
     searchInput.addEventListener('keyup' , () => {
+        console.log(searchInput.value)
         searchAndCreateAnimations(backgroundOutdoor,searchInput.value,resultSearchEl,outdoorEL)
     })
 

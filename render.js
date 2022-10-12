@@ -91,5 +91,12 @@ export default function render(urlImages,movie) {
 
             </div>
         </footer>
+        <section class="menu-mobile-container">
+                <a href=""><i class="fa-solid fa-bars"></i></a>
+                <input type="text" placeholder="Search for Movies..."></input>
+                <a href=""><i class="fa-regular fa-bell"></i></a>
+                <a href=""><i class="fa-regular fa-user"></i></a>
+            
+            </section>
     `
 }
