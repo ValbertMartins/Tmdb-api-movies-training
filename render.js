@@ -23,7 +23,7 @@ export default function render(urlImages,movie) {
         </header>
         
 
-        <section class="container">
+        <section class="container margin">
             <article class="flex-container" id="results-category">
             </article>
             <div>
@@ -92,11 +92,13 @@ export default function render(urlImages,movie) {
             </div>
         </footer>
         <section class="menu-mobile-container">
-                <a href=""><i class="fa-solid fa-bars"></i></a>
-                <input type="text" placeholder="Search for Movies..."></input>
-                <a href=""><i class="fa-regular fa-bell"></i></a>
-                <a href=""><i class="fa-regular fa-user"></i></a>
-            
-            </section>
+
+            <i class="fa-solid fa-bars"></i>
+            <button id="btn-mobile-menu"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" class="mobile-search-input" placeholder="Search for Movies..."></input>
+            <a href=""><i class="fa-regular fa-bell"></i></a>
+            <a href=""><i class="fa-regular fa-user"></i></a>
+    
+        </section>
     `
 }

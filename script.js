@@ -132,7 +132,6 @@ const showOutdoor = (outdoorEL,backgroundOutdoor) => {
     outdoorEL.style.display = 'block'
     backgroundOutdoor.style.backgroundSize = 'cover'
     backgroundOutdoor.classList.add('animation-class')
-    document.querySelector('.outdoor-gradient-container').style.minHeight = '100vh'
 }
 const hideCategory = category => category.style.display = 'none'
 
@@ -162,10 +161,24 @@ const SearchListener =  () => {
     const outdoorEL = document.querySelector('.details-outdoor-container')
     const backgroundOutdoor = document.querySelector('.background-container-outdoor')
     searchInput.addEventListener('keyup' , () => {
-        console.log(searchInput.value)
+        
         searchAndCreateAnimations(backgroundOutdoor,searchInput.value,resultSearchEl,outdoorEL)
     })
 
+    menuMobileSearchListener(backgroundOutdoor,resultSearchEl,outdoorEL)
+
+}
+
+
+const menuMobileSearchListener = (backgroundOutdoor, resultSearchEl, outdoorEL ) => {
+    const btnMenuMobile = document.querySelector('#btn-mobile-menu')
+    const searchInputMobile = document.querySelector('.mobile-search-input')
+    btnMenuMobile.addEventListener('click', () => {
+        searchInputMobile.classList.toggle('active')
+    } )
+    searchInputMobile.addEventListener('keyup', () => {
+        searchAndCreateAnimations(backgroundOutdoor,searchInputMobile.value,resultSearchEl,outdoorEL)
+    })
 }
 
 
