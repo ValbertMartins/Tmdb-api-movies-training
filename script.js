@@ -26,9 +26,7 @@ const request = async url => {
 //category-section
 const createCategory = async (urlCategory,categoryEl) => {
     const { results:moviesList } = await request(urlCategory)
-    console.log(moviesList)
-    console.log(categoryEl)
-    
+    console.log()
     if(moviesList.length == 0){
         categoryEl.innerHTML = '<h1>Results not found</h1>'
     } else{ 
@@ -129,9 +127,12 @@ const hideOutdoor = (outdoorEL,resultSearchEl,backgroundOutdoor) => {
 
 }
 const showOutdoor = (outdoorEL,backgroundOutdoor) => {
-    outdoorEL.style.display = 'block'
-    backgroundOutdoor.style.backgroundSize = 'cover'
-    backgroundOutdoor.classList.add('animation-class')
+    if(outdoorEL){
+        outdoorEL.style.display = 'block'
+        backgroundOutdoor.style.backgroundSize = 'cover'
+        backgroundOutdoor.classList.add('animation-class')
+
+    }
 }
 const hideCategory = category => category.style.display = 'none'
 
@@ -161,8 +162,11 @@ const SearchListener =  () => {
     const outdoorEL = document.querySelector('.details-outdoor-container')
     const backgroundOutdoor = document.querySelector('.background-container-outdoor')
     searchInput.addEventListener('keyup' , () => {
+        const searchInputValue = searchInput.value.replaceAll(" ", "")
+       
         
-        searchAndCreateAnimations(backgroundOutdoor,searchInput.value,resultSearchEl,outdoorEL)
+        
+        searchAndCreateAnimations(backgroundOutdoor,searchInputValue,resultSearchEl,outdoorEL)
     })
 
     menuMobileSearchListener(backgroundOutdoor,resultSearchEl,outdoorEL)
@@ -177,7 +181,9 @@ const menuMobileSearchListener = (backgroundOutdoor, resultSearchEl, outdoorEL )
         searchInputMobile.classList.toggle('active')
     } )
     searchInputMobile.addEventListener('keyup', () => {
-        searchAndCreateAnimations(backgroundOutdoor,searchInputMobile.value,resultSearchEl,outdoorEL)
+        const searchInputMobileValue = searchInputMobile.value.replaceAll(' ', '')
+
+        searchAndCreateAnimations(backgroundOutdoor,searchInputMobileValue,resultSearchEl,outdoorEL)
     })
 }
 

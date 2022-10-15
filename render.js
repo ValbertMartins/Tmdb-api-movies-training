@@ -32,7 +32,7 @@ export default function render(urlImages,movie) {
 
             <article class="movie-informations-container">
 
-                <div class="movie-container">
+                <div class="movie-container-info">
                     <img src="${urlImages + (movie.poster_path ?? movie.profile_path)}"  class="poster-movie" alt="">
                 </div>
 
@@ -47,10 +47,10 @@ export default function render(urlImages,movie) {
                         </p>
                     </div>
                     <div>
-                       <button class="default-button" id="watch-btn">
+                       <button class="default-button movie-info-btn-addlist" id="watch-btn">
                             <span>
                                  <i class="fa-sharp fa-solid fa-play"></i>
-                            </span> Play
+                            </span> Add list
                         </button>
                     </div>
                 </div>

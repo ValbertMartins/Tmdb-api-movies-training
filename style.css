@@ -338,11 +338,15 @@ footer {
 .movie-details {
     max-width: 1000px;
     margin: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .movie-details p.sinopsis {
     font-size: 1.5rem;
     color: #848483;
+    text-align: justify;
 }
 
 .color-red {
@@ -355,9 +359,13 @@ footer {
 }
 
 
-.title-movie {
-    margin: 1rem;
+.title-movie { 
+    font-size: 2rem;
+    margin: 1rem ;
+  
 }
+
+
 
 
 
@@ -495,6 +503,18 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        min-height: 70vh;
+       
+    }
+    
+    .title-movie {
+        text-align: center;
+        font-size: 2.8rem;
+        margin: 2.5rem ;
+        
+    }
+    .movie-info-btn-addlist {
+        width: 500px;
     }
 
 
@@ -542,6 +562,9 @@ footer {
     .margin {
         margin: 2rem 1rem;
     }
+    .movie-container-info {
+        width: 70%;
+    } 
 
 }
 
@@ -551,12 +574,26 @@ footer {
     }
     .container {
         max-width: 700px;
+        margin: 0 auto;
     }
-
+    
     .movie-container {
         max-width: 200px;
     }
 
+    .title-movie {
+        font-size: 3.5rem;
+        margin: 2.8rem;
+        
+    }
+   
+    .movie-details p.sinopsis {
+        font-size: 2.3rem;
+        margin: 2rem 0;
+    }
+
+    
+    
 }
 
 @media(max-width: 657px){
@@ -581,6 +618,14 @@ footer {
         margin: 0.3rem 1rem;
         max-width: 150px;
     }
+    .movie-details p.sinopsis {
+        font-size: 2.3rem;
+        margin: 3rem;
+    }
+
+    .movie-info-btn-addlist {
+        max-width: 390px;
+    }
 }
 
 @media(max-width: 528px){
@@ -590,6 +635,8 @@ footer {
 
     #watch-btn {
         min-width: 100px;
+        max-height: 25px;
+        border-radius: 10px;
         
     }
     .title-category::after {
@@ -613,14 +660,22 @@ footer {
         margin: 1rem 0.5rem;
     }
 
-    #watch-btn,.default-button {
-        max-height: 30px;
-    }
+    
 
     .title-category::after {
         max-width: 150px;
         
     }
+    .movie-details p.sinopsis {
+        font-size: 2.3rem;
+        margin: 4rem;
+    }
+
+    .movie-info-btn-addlist {
+        max-width: 250px;
+    }
+
+  
 }
 
 
