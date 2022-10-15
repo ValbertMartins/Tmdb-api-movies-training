@@ -156,17 +156,18 @@ const searchAndCreateAnimations = (backgroundOutdoor,searchInput,resultSearchEl,
     }
 }
 
+
+const verifyEmptySearch = value => value.split("").every( letter => letter == " ")
+
+
 const SearchListener =  () => {
     const searchInput = document.querySelector('.search-input')
     const resultSearchEl = document.querySelector('#results-category')
     const outdoorEL = document.querySelector('.details-outdoor-container')
     const backgroundOutdoor = document.querySelector('.background-container-outdoor')
+
     searchInput.addEventListener('keyup' , () => {
-        const searchInputValue = searchInput.value.replaceAll(" ", "")
-       
-        
-        
-        searchAndCreateAnimations(backgroundOutdoor,searchInputValue,resultSearchEl,outdoorEL)
+        verifyEmptySearch(searchInput.value) ? null : searchAndCreateAnimations(backgroundOutdoor,searchInput.value,resultSearchEl,outdoorEL)
     })
 
     menuMobileSearchListener(backgroundOutdoor,resultSearchEl,outdoorEL)
@@ -177,13 +178,13 @@ const SearchListener =  () => {
 const menuMobileSearchListener = (backgroundOutdoor, resultSearchEl, outdoorEL ) => {
     const btnMenuMobile = document.querySelector('#btn-mobile-menu')
     const searchInputMobile = document.querySelector('.mobile-search-input')
+
     btnMenuMobile.addEventListener('click', () => {
         searchInputMobile.classList.toggle('active')
     } )
+    
     searchInputMobile.addEventListener('keyup', () => {
-        const searchInputMobileValue = searchInputMobile.value.replaceAll(' ', '')
-
-        searchAndCreateAnimations(backgroundOutdoor,searchInputMobileValue,resultSearchEl,outdoorEL)
+        verifyEmptySearch(searchInputMobile.value) ? null : searchAndCreateAnimations(backgroundOutdoor,searchInputMobile.value,resultSearchEl,outdoorEL)
     })
 }
 
